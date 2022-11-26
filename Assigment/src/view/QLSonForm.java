@@ -18,19 +18,17 @@ import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Son;
 import sercive.QLSon;
 
-public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
+public class QLSonForm extends javax.swing.JFrame implements Runnable {
 
     private String filename = "ass_ph26840.txt";
     private QLSon qlson = new QLSon();
 
-    public QLSonForm1() {
+    public QLSonForm() {
         initComponents();
         setLocationRelativeTo(null);
 
@@ -56,7 +54,7 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
         model.setRowCount(0);
         // Duyệt danh sách sản phẩm
         for (Son x : ds) {
-            Son son = (Son) x; // NOTE 
+            Son son = (Son) x;
             // Ghi sản phẩm ra từng dòng
             Object[] row = {
                 son.getMaSon(),
@@ -81,14 +79,13 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
         String thuongHieu = cbThuongHieu.getSelectedItem().toString();
         String mauSac = txtColor.getText();
 
-        String donGia = txtPrice.getText();
-//          Double donGia = Double.parseDouble(donGiaStr);
+        String donGiaStr = txtPrice.getText();
+        Double donGiaDouble = Double.parseDouble(donGiaStr);
+        BigDecimal donGia = BigDecimal.valueOf(donGiaDouble);
 
-        return new Son(maSon, tenSon, phanLoai, thuongHieu, mauSac, Double.parseDouble(donGia));
-
+        return new Son(maSon, tenSon, phanLoai, thuongHieu, mauSac, donGia);
     }
 
-    
     private void clearForm() {
         txtId.setText("");
         txtName.setText("");
@@ -233,9 +230,7 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnGhiFile)
-                                .addComponent(cbThuongHieu, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(cbThuongHieu, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(81, 81, 81)
@@ -258,20 +253,21 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
                         .addGap(30, 30, 30)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
+                        .addGap(43, 43, 43)
+                        .addComponent(btnGhiFile)
+                        .addGap(41, 41, 41)
                         .addComponent(btnDocLoad)
-                        .addGap(50, 50, 50)
+                        .addGap(46, 46, 46)
                         .addComponent(btnThem)
-                        .addGap(62, 62, 62)
+                        .addGap(40, 40, 40)
                         .addComponent(btnSua))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
                         .addComponent(btnClear)
-                        .addGap(47, 47, 47)
+                        .addGap(38, 38, 38)
                         .addComponent(btnXoaDong)
-                        .addGap(49, 49, 49)
-                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(118, 118, 118)))
+                        .addGap(39, 39, 39)
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -301,12 +297,12 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
                     .addComponent(btnDocLoad)
                     .addComponent(btnThem)
                     .addComponent(btnSua))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
                     .addComponent(btnXoaDong)
                     .addComponent(btnExit))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
@@ -314,7 +310,7 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("QUẢN LÝ SON_NGALTPH26840");
 
-        lbClock.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbClock.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbClock.setText("00:00");
 
         lbdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -324,34 +320,32 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbdate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbClock, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lbdate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbClock))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(152, 152, 152)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 21, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(152, 152, 152)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbClock, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbdate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(lbdate, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(lbClock, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -372,8 +366,6 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-         
-        Son sonMoi = getDataForm();
         if (txtId.getText().trim().equals("")
                 || txtName.getText().trim().equals("")
                 || txtPhanLoai.getText().trim().equals("")
@@ -381,14 +373,37 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
                 || txtPrice.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Không được để trống");
             return;
-
         }
-        
 
+        try {
+            Long maSon = Long.parseLong(txtId.getText());
+            if (maSon <= 0) {
+
+                JOptionPane.showMessageDialog(this, "Số phải lớn hơn 0");
+                return;
+            }
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Phải là số nguyên dương");
+            return;
+        }
+        try {
+            double luong = Double.parseDouble(txtPrice.getText());
+            if (luong <= 0) {
+
+                JOptionPane.showMessageDialog(this, "Lương phải là một số dương lớn hơn 0");
+                return;
+            }
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Lương phải là số");
+            return;
+        }
+        Son sonMoi = getDataForm();
         if (sonMoi == null) {
             return;
         }
-
+      
         qlson.Add(sonMoi);
         loadTable();
         clearForm();
@@ -402,14 +417,55 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
             JOptionPane.showMessageDialog(this, "Hãy chọn một dòng trên Table", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        if (txtId.getText().trim().equals("")
+                || txtName.getText().trim().equals("")
+                || txtPhanLoai.getText().trim().equals("")
+                || txtColor.getText().trim().equals("")
+                || txtPrice.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Không được để trống");
+            return;
+        }
+
+        try {
+            Long maSon = Long.parseLong(txtId.getText());
+            if (maSon <= 0) {
+
+                JOptionPane.showMessageDialog(this, "Mã son phải là một số dương lớn hơn 0");
+                return;
+            }
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Không đúng định dạng");
+            return;
+        }
+        try {
+            double luong = Double.parseDouble(txtPrice.getText());
+            if (luong <= 0) {
+
+                JOptionPane.showMessageDialog(this, "Lương phải là một số dương lớn hơn 0");
+                return;
+            }
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Lương phải là số");
+            return;
+        }
         Son s = getDataForm();
         if (s == null) {
             return;
         }
-        JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thay đổi không");
+        int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thay đổi không");
+        if (confirm == JOptionPane.NO_OPTION) {
+            return;
+        } else if (confirm == JOptionPane.CANCEL_OPTION) {
+            return;
+
+        }
+
         qlson.Update(row, s);
         loadTable();
-        getDataForm();
+        clearForm();
+       // getDataForm();
         JOptionPane.showMessageDialog(this, "Sửa thành công");
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -461,15 +517,11 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
             FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
             ArrayList<Son> ds = (ArrayList<Son>) ois.readObject();
-///lỗi ở bên lớp QLSon,ko đc 
-// public void setList(List<Son> ds) {
-//        dsSon = ds;  NOTE 
-//
-//    }
 
-            this.qlson.setList(ds);
-            this.loadTable();
+            qlson.setList(ds);
+            loadTable();
             ois.close();
+            
             JOptionPane.showMessageDialog(this, "Đọc thành công");
 
         } catch (FileNotFoundException e) {
@@ -538,21 +590,20 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(QLSonForm1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QLSonForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(QLSonForm1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QLSonForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(QLSonForm1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QLSonForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(QLSonForm1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QLSonForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new QLSonForm1().setVisible(true);
+                new QLSonForm().setVisible(true);
             }
         });
     }
@@ -601,3 +652,9 @@ public class QLSonForm1 extends javax.swing.JFrame implements Runnable {
         }
     }
 }
+
+///lỗi ở bên lớp QLSon,ko đc 
+// public void setList(List<Son> ds) {
+//        dsSon = ds;  NOTE 
+//
+//    }

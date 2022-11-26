@@ -12,12 +12,12 @@ public class Son implements Serializable{
     private String phanLoai;
     private String thuongHieu;
     private String mauSac;
-    private Double donGia;
+    private BigDecimal donGia;
 
     public Son() {
     }
 
-    public Son(Long maSon, String tenSon, String phanLoai, String thuongHieu, String mauSac, Double donGia) {
+    public Son(Long maSon, String tenSon, String phanLoai, String thuongHieu, String mauSac, BigDecimal donGia) {
         this.maSon = maSon;
         this.tenSon = tenSon;
         this.phanLoai = phanLoai;
@@ -66,11 +66,11 @@ public class Son implements Serializable{
         this.mauSac = mauSac;
     }
 
-    public Double getDonGia() {
+    public BigDecimal getDonGia() {
         return donGia;
     }
 
-    public void setDonGia(Double donGia) {
+    public void setDonGia(BigDecimal donGia) {
         this.donGia = donGia;
     }
 
@@ -79,5 +79,5 @@ public class Son implements Serializable{
         return "Son{" + "maSon=" + maSon + ", tenSon=" + tenSon + ", phanLoai=" + phanLoai + ", thuongHieu=" + thuongHieu + ", mauSac=" + mauSac + ", donGia=" + donGia + '}';
     }
 
-    
+  
 }

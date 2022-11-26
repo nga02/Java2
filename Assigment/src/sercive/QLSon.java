@@ -9,12 +9,16 @@ public class QLSon {
 
     private List<Son> dsSon = new ArrayList<>();
 
+    
+
     public QLSon() {
-
-        dsSon.add(new Son(1L, "Christian Louboutin", "Son lì", "Dior", "Cam tươi", 680D));
-        dsSon.add(new Son(2L, "Rouge Coco Bloom 134", "Son dưỡng", "Chanel", "Đỏ nâu", 890D));
-        dsSon.add(new Son(3L, "Baume A Lèvres Lip", "Son nước", "Gucci", "Hồng Nude", 760D));
-
+        dsSon.add(new Son(1L, "Christian Louboutin", "Son lì", "Dior", "Cam tươi", BigDecimal.valueOf(970)));
+        dsSon.add(new Son(2L, "Rouge Coco Bloom 134", "Son dưỡng", "Chanel", "Đỏ nâu", BigDecimal.valueOf(650)));
+        dsSon.add(new Son(3L, "Baume A Lèvres Lip", "Son nước", "Gucci", "Hồng Nude", BigDecimal.valueOf(890)));
+        dsSon.add(new Son(4L, "Baume A Lèvres Lip", "Son nước", "Gucci", "Hồng Nude", BigDecimal.valueOf(780)));
+        dsSon.add(new Son(5L, "Baume A Lèvres Lip", "Son nước", "Gucci", "Hồng Nude", BigDecimal.valueOf(950)));
+    
+        
     }
 
 //Thêm sản phẩm mới
