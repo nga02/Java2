@@ -1,0 +1,10 @@
+Son{maSon=1, tenSon=Christian Louboutin, phanLoai=Son lì, thuongHieu=Dior, mauSac=Cam tươi, donGia=970}
+Son{maSon=2, tenSon=Rouge Coco Bloom 134, phanLoai=Son dưỡng, thuongHieu=Chanel, mauSac=Đỏ nâu, donGia=650}
+Son{maSon=3, tenSon=Baume A Lèvres Lip, phanLoai=Son nước, thuongHieu=Gucci, mauSac=Hồng Nude, donGia=890}
+Son{maSon=4, tenSon=Rouge Allure 99, phanLoai=Son dưỡng, thuongHieu=Chanel, mauSac=Đỏ rượu, donGia=590}
+Son{maSon=5, tenSon=Rouge Star Lipstick, phanLoai=Son kem, thuongHieu=Dior, mauSac=Nâu đỏ, donGia=899}
+Son{maSon=6, tenSon=Nude 514 Virginia, phanLoai=Son nước, thuongHieu=Gucci, mauSac=Cam san hô, donGia=760}
+Son{maSon=7, tenSon=Rouge 999 Matte, phanLoai=Son dưỡng, thuongHieu=Dior, mauSac=Hồng đậm, donGia=575}
+Son{maSon=8, tenSon=Rouge Allure Camelia, phanLoai=Son lì, thuongHieu=Chanel, mauSac=Vàng Gold, donGia=825}
+Son{maSon=9, tenSon=Limited 25 Goldie, phanLoai=Son kem, thuongHieu=Gucci, mauSac=Hồng phấn, donGia=790}
+Son{maSon=10, tenSon=Addict Lip, phanLoai=Son lì, thuongHieu=Dior, mauSac=Đỏ Cherry, donGia=850}
